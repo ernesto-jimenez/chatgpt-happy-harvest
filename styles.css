@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+.crop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    background-color: #0f0;
+}
+
+.market,
+.inventory {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.market-title,
+.inventory-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.market-item,
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.seed {
+    cursor: pointer;
+}
+
+.seed.selected {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.seed-button.selected {
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: #ccc;
+    color: #000;
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a4a4a;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+}
+
+.market {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.market-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

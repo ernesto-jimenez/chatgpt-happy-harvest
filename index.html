@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Harvest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="timer">5:00</div>
+        <div class="seed-selection">
+            <h2>Select Seed</h2>
+            <button class="seed-button seed-button-wheat" data-seed-type="wheat">Wheat</button>
+            <button class="seed-button seed-button-corn" data-seed-type="corn">Corn</button>
+            <button class="seed-button seed-button-carrots" data-seed-type="carrots">Carrots</button>
+        </div>
+        <div class="grid"></div>
+        <div class="market">
+            <h2 class="market-title">Market</h2>
+            <div class="market-item wheat">
+                <span>🌾 Wheat seeds:</span>
+                <span class="market-price wheat"></span>
+                <button class="buy-seed" data-seed-type="wheat">Buy</button>
+            </div>
+            <div class="market-item corn">
+                <span>🌽 Corn seeds:</span>
+                <span class="market-price corn"></span>
+                <button class="buy-seed" data-seed-type="corn">Buy</button>
+            </div>
+            <div class="market-item carrots">
+                <span>🥕 Carrot seeds:</span>
+                <span class="market-price carrots"></span>
+                <button class="buy-seed" data-seed-type="carrots">Buy</button>
+            </div>
+        </div>
+        <div class="inventory">
+            <div class="inventory-title">Inventory</div>
+            <div class="inventory-item">
+                Coins: <span class="coins">100</span>
+            </div>
+            <div class="inventory-item">
+                Wheat seeds: <span class="seeds-wheat">5</span> (Level: <span class="level-wheat"></span>)
+                <button class="upgrade-button" data-crop-type="wheat">Upgrade Wheat (<span class="upgrade-cost-wheat"></span>)</button>
+            </div>
+            <div class="inventory-item">
+                Corn seeds: <span class="seeds-corn">2</span> (Level: <span class="level-corn"></span>)
+                <button class="upgrade-button" data-crop-type="corn">Upgrade Corn (<span class="upgrade-cost-corn"></span>)</button>
+            </div>
+            <div class="inventory-item">
+                Carrot seeds: <span class="seeds-carrots">1</span> (Level: <span class="level-carrots"></span>)
+                <button class="upgrade-button" data-crop-type="carrots">Upgrade Carrots (<span class="upgrade-cost-carrots"></span>)</button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
