@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-container">
+    <div class="start-screen">
+      <h1>Happy Harvest</h1>
+      <p>Welcome to Happy Harvest! Your goal is to earn as many coins as possible by planting, growing, and harvesting crops. The game will end when the timer runs out.</p>
+      <label for="game-duration">Select game duration:</label>
+      <select id="game-duration">
+        <option value="60">1 minute</option>
+        <option value="300">5 minutes</option>
+        <option value="600">10 minutes</option>
+        <option value="900">15 minutes</option>
+        <option value="1800">30 minutes</option>
+      </select>
+      <button id="start-game">Start Game</button>
+    </div>
+    <div class="game-container" style="display: none;">
         <div class="timer">5:00</div>
         <div class="seed-selection">
             <h2>Select Seed</h2>

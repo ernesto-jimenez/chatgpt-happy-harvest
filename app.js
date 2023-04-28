@@ -22,6 +22,7 @@ const gameState = {
     },
     gridSize: 9,
     timer: 300, // Time limit in seconds (e.g., 300 seconds = 5 minutes)
+    initialTimer: 300,
     gameEnded: false,
     selectedSeed: 'wheat',
 };
@@ -36,14 +37,23 @@ function selectSeed(seedType) {
 
 // Initialize the game
 function init() {
+  document.getElementById('start-game').addEventListener('click', () => {
+    const gameDuration = parseInt(document.getElementById('game-duration').value);
+    gameState.timer = gameDuration;
+    gameState.initialTimer = gameDuration;
+
+    document.querySelector('.start-screen').style.display = 'none';
+    document.querySelector('.game-container').style.display = 'block';
+
     setupGrid();
     setupEventListeners();
     loadGame();
     gameLoop();
     setInterval(updateGame, 1000);
     updateMarketDisplay();
-    setInterval(updateMarketPrices, 10000); // Update market prices every 10 seconds
+    setInterval(updateMarketPrices, 10000);
     updateSelectedSeedDisplay();
+  });
 }
 
 function gameLoop() {
@@ -227,7 +237,7 @@ function updateGridDisplay() {
 }
 
 function updateInventoryDisplay() {
-    document.querySelector('.coins').textContent = gameState.inventory.coins;
+    document.querySelector('.coins').textContent = gameState.inventory.coins.toFixed(2);
 
     document.querySelector('.seeds-wheat').textContent = gameState.inventory.seeds.wheat;
     document.querySelector('.level-wheat').textContent = gameState.upgrades.wheat.level;
@@ -260,29 +270,31 @@ function updateTimerDisplay() {
 }
 
 function endGame() {
-    alert(`Game Over! You earned ${gameState.inventory.coins} coins.`);
+    const gameDurationInMinutes = gameState.initialTimer / 60;
+    alert(`Game Over! You played for ${gameDurationInMinutes} minutes and earned ${gameState.inventory.coins} coins.`);
     document.querySelector('.grid').removeEventListener('click', handleCellClick);
     // Optionally, disable other interactions (e.g., buying seeds)
+    window.location.href = 'start.html';
 }
 
 function updateSelectedSeedDisplay() {
-    const seedButtons = document.querySelectorAll('.seed-button');
-    seedButtons.forEach((button) => {
-        button.classList.remove('selected');
-    });
+  const seedButtons = document.querySelectorAll('.seed-button');
+  seedButtons.forEach((button) => {
+    button.classList.remove('selected');
+  });
 
-    const selectedSeedButton = document.querySelector(`.seed-button-${gameState.selectedSeed}`);
-    selectedSeedButton.classList.add('selected');
+  const selectedSeedButton = document.querySelector(`.seed-button-${gameState.selectedSeed}`);
+  selectedSeedButton.classList.add('selected');
 }
 
 function applyUpgrade(cropType) {
-    if (gameState.inventory.coins >= gameState.upgrades[cropType].cost) {
-        gameState.inventory.coins -= gameState.upgrades[cropType].cost;
-        gameState.upgrades[cropType].level += 1;
-        gameState.upgrades[cropType].cost = Math.ceil(gameState.upgrades[cropType].cost * 1.5);
+  if (gameState.inventory.coins >= gameState.upgrades[cropType].cost) {
+    gameState.inventory.coins -= gameState.upgrades[cropType].cost;
+    gameState.upgrades[cropType].level += 1;
+    gameState.upgrades[cropType].cost = Math.ceil(gameState.upgrades[cropType].cost * 1.5);
 
-        updateInventoryDisplay();
-    }
+    updateInventoryDisplay();
+  }
 }
 
 // Start the game
